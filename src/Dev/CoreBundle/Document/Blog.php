@@ -1,15 +1,12 @@
 <?php
-// src/Dev/CoreBundle/Entity/Blog.php
+// src/Dev/CoreBundle/Document/Blog.php
 
-namespace Dev\CoreBundle\Entity;
+namespace Dev\CoreBundle\Document;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="blog")
- * @ORM\Entity(repositoryClass="Dev\CoreBundle\Entity\BlogRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @mongodb:Document(collection="Blog")
  */
 class Blog
 {
@@ -21,38 +18,35 @@ class Blog
     }
 
     /**
-     * @ORM\preUpdate
+     * ORMpreUpdate
      */
-    public function setUpdatedValue()
-    {
-       $this->setUpdated(new \DateTime());
-    }
-
+    // public function setUpdatedValue()
+    // {
+    //    $this->setUpdated(new \DateTime());
+    // }
     
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @mongodb:Id
      */
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @mongodb:Field(type="string")
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @mongodb:Field(type="text")
      */
     protected $text;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @mongodb:Field(type="timestamp")
      */
     protected $created;
 
     /**
-     * @ORM\Column(type="datetime")
+     *@mongodb:Field(type="timestamp")
      */
     protected $updated;
 

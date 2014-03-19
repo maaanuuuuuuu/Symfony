@@ -5,7 +5,7 @@ namespace Dev\CoreBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-use Dev\CoreBundle\Entity\Blog;
+use Dev\CoreBundle\Document\Blog;
 
 class BlogType extends AbstractType
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev\CoreBundle\Entity;
+namespace Dev\CoreBundle\Document;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -13,7 +13,7 @@ class BlogRepository extends EntityRepository
 	//retourne les $n derniers blogs
 	public function findLast($n)
     {
-		$query = $this->_em->createQuery('SELECT b FROM Dev\CoreBundle\Entity\Blog b ORDER BY b.created DESC')
+		$query = $this->_em->createQuery('SELECT b FROM Dev\CoreBundle\Document\Blog b ORDER BY b.created DESC')
 			->setMaxResults($n);
 	    return $query->getResult();
     }

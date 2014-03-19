@@ -4,14 +4,14 @@
 namespace Dev\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Dev\CoreBundle\Entity\Blog;
+use Dev\CoreBundle\Document\Blog;
 use Dev\CoreBundle\Form\BlogType;
 
 class PageController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->get('doctrine.odm.mongodb.document_manager');
 
     	//j'ajoute le formulaire d'ajout de nouveau blog post
     	$newBlog = new Blog();
