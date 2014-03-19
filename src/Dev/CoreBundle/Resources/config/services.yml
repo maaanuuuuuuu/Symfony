@@ -1,0 +1,7 @@
+parameters:
+#    dev_core.example.class: Dev\CoreBundle\Example
+
+services:
+#    dev_core.example:
+#        class: %dev_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
