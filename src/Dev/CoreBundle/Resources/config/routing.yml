@@ -1,4 +1,4 @@
-# src/Blogger/BlogBundle/Resources/config/routing.yml
+# src/Blogger/CoreBundle/Resources/config/routing.yml
 DevCoreBundle_homepage:
     pattern:  /
     defaults: { _controller: DevCoreBundle:Page:index }
@@ -10,4 +10,11 @@ DevCoreBundle_about:
     defaults: { _controller: DevCoreBundle:Page:about }
     requirements:
         _method:  GET
+
+DevCoreBundle_blog_show:
+    pattern:  /blog/show/{id}
+    defaults: { _controller: DevCoreBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+
 
