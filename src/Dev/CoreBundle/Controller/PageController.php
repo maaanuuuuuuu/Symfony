@@ -9,6 +9,8 @@ class PageController extends Controller
 {
     public function indexAction()
     {
+    	//j'ajoute le formulaire d'ajout de nouveau blog post
+    	
         return $this->render('DevCoreBundle:Page:index.html.twig');
     }
 
