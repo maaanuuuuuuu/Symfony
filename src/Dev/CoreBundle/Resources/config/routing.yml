@@ -3,7 +3,7 @@ DevCoreBundle_homepage:
     pattern:  /
     defaults: { _controller: DevCoreBundle:Page:index }
     requirements:
-        _method:  GET
+        _method:  GET|POST
 
 DevCoreBundle_about:
     pattern:  /about

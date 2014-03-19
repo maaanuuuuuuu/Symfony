@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="blog")
+ * @ORM\Entity(repositoryClass="Dev\CoreBundle\Entity\BlogRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Blog
@@ -44,11 +45,6 @@ class Blog
      * @ORM\Column(type="text")
      */
     protected $text;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $tags;
 
     /**
      * @ORM\Column(type="datetime")
