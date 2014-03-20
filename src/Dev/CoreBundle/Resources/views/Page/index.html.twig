@@ -1,17 +1,32 @@
 {# src/Blogger/BlogBundle/Resources/views/Page/index.html.twig #}
 {% extends 'DevCoreBundle::layout.html.twig' %}
 
-{% block body %}
-    <section>
-	    <form action="{{ path('DevCoreBundle_homepage') }}" method="post" {{ form_enctype(newBlogForm) }}>
-	 		{{ form_widget(newBlogForm) }}
-	 		<button type="submit" class="btn-search"><span><i class="icon-search"></i> Submit </span></button>
-    	</form>
-    </section>
-    {% for blog in blogs %}
-    	<section>
-    		<h1>{{ blog.title }}</h1>
-    		<p>{{ blog.text|raw }}</p>
-    	</section>
-    {% endfor %}
+{% block container %}
+    <div class="blog-header">
+        <h1 class="blog-title">Blog</h1>
+        <p class="lead blog-description">Projets personnels</p>
+    </div>
+    <div class="row">
+        {% block body %}
+            <div class="col-sm-8 blog-main">
+                <section>
+                    <form action="{{ path('DevCoreBundle_homepage') }}" method="post" {{ form_enctype(newBlogForm) }}>
+                        {{ form_widget(newBlogForm) }}
+                        <button type="submit" class="btn-search"><span><i class="icon-search"></i> Submit </span></button>
+                    </form>
+                </section>
+                {% for blog in blogs %}
+                    <section>
+                        <h1>{{ blog.title }}</h1>
+                        <p>{{ blog.text|raw }}</p>
+                    </section>
+                {% endfor %}
+            </div>
+        {% endblock %}
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            {% block sidebar %}
+                Filter 
+            {% endblock %}
+        </div>
+    </div>
 {% endblock %}

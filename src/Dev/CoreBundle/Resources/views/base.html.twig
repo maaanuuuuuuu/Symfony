@@ -2,51 +2,61 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
-        <title>{% block title %}Blog{% endblock %} - symblog</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Projets Web personnels">
+        <meta name="author" content="Emmanuel DESIR">
+        <title>{% block title %}Blog{% endblock %}</title>
         <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         {% block stylesheets %}
             <link href="{{ asset('bundles/devcore/css/screen.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+
     </head>
     <body>
-        <section id="wrapper">
-            <header id="header">
-                <div class="top">
-                    {% block navigation %}
-                        <nav>
-                            <ul class="navigation">
-                                <li><a href="{{ path('DevCoreBundle_homepage') }}">Home</a></li>
-                                <li><a href="{{ path('DevCoreBundle_about') }}">About</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </nav>
-                    {% endblock %}
+        {% block navigation %}
+            
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Blog</a>
                 </div>
-
-                <hgroup>
-                    <h2>{% block blog_title %}<a href="{{ path('DevCoreBundle_homepage') }}">symblog</a>{% endblock %}</h2>
-                    <h3>{% block blog_tagline %}<a href="{{ path('DevCoreBundle_homepage') }}">creating a blog in Symfony2</a>{% endblock %}</h3>
-                </hgroup>
-            </header>
-
-            <section class="main-col">
-                {% block body %}{% endblock %}
-            </section>
-            <aside class="sidebar">
-                {% block sidebar %}{% endblock %}
-            </aside>
-
-            <div id="footer">
-                {% block footer %}
-                    
-                {% endblock %}
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('DevCoreBundle_homepage') }}">Home</a></li>
+                    <li><a href="{{ path('DevCoreBundle_about') }}">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+                </div>
             </div>
-        </section>
+        </div>
+        {% endblock %}
+        <div class="container">
+            {% block container %}{%endblock%}
+        </div><!-- /.container -->
 
-        {% block javascripts %}{% endblock %}
+        <div class="blog-footer">
+            {% block footer %}                
+            {% endblock %}
+        </div>
+
+        {% block javascripts %}
+            <link href="" type="text/css" rel="stylesheet" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
