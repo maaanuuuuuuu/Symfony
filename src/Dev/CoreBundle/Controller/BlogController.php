@@ -4,6 +4,7 @@
 namespace Dev\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Httpfoundation\Response;
 
 /**
  * Blog controller.
@@ -11,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class BlogController extends Controller
 {
     /**
-     * Show a blog entry
+     * Show a blog entry  DEPRECATED est encore ne mode ORM/sql et pas ODM/MongoDb
      */
     public function showAction($id)
     {
@@ -26,5 +27,21 @@ class BlogController extends Controller
         return $this->render('DevCoreBundle:Blog:show.html.twig', array(
             'blog'      => $blog,
         ));
+    }
+
+    /**
+     * Delete a blog entry
+     */
+    public function deleteAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->request->get('id');
+        $dm = $this->get('doctrine.odm.mongodb.document_manager');
+        $blog = $dm->getRepository("DevCoreBundle:Blog")->find($id);
+        $dm->remove($blog);
+        $dm->flush();
+
+        $response = new Response("ok", 200);
+        return $response;
     }
 }

@@ -18,3 +18,8 @@ DevCoreBundle_blog_show:
         _method:  GET
         id: \d+
 
+DevCoreBundle_blog_delete:
+    pattern:  /blog/delete
+    defaults: { _controller: DevCoreBundle:Blog:delete }
+    requirements:
+        _method: POST

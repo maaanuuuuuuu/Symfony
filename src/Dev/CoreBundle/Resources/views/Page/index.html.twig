@@ -16,7 +16,7 @@
                     </form>
                 </section>
                 {% for blog in blogs %}
-                    <section class="blogEntry">
+                    <section class="blogEntry" data-id="{{ blog.id }}">
                         <h1 class="blogTitle">{{ blog.title }} <i class="glyphicon glyphicon-edit editButton"></i> <i class="glyphicon glyphicon-trash trashButton"></i></h1>
                         <p>{{ blog.text|raw }}</p>
                     </section>
@@ -29,10 +29,20 @@
             {% endblock %}
         </div>
     </div>
+    <div class="row deleteConfirmation">
+        Annuler la suppression <i class="glyphicon glyphicon-repeat cancelDeleteButton"></i>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        var postaction = {
+            blog : {
+                remove: "{{ path('DevCoreBundle_blog_delete') }}"
+            }
+        };
+    </script>
     <script src="{{ asset('bundles/devcore/js/blogCreationForm.js') }}"></script>
     <script src="{{ asset('bundles/devcore/js/blogEditionForm.js') }}"></script>
 {% endblock %}
