@@ -3,50 +3,49 @@
 
 namespace Dev\CoreBundle\Document;
 
-use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 /**
- * @mongodb:Document(collection="Blog")
+ * @MongoDB\Document(collection="Blog", repositoryClass="Dev\CoreBundle\Document\BlogRepository")
  */
 class Blog
 {
 
     public function __construct()
     {
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
+        $this->setCreated(time());
+        $this->setUpdated(time());
     }
 
     /**
-     * ORMpreUpdate
+     * @MongoDB\preUpdate
      */
-    // public function setUpdatedValue()
-    // {
-    //    $this->setUpdated(new \DateTime());
-    // }
+    public function setUpdatedValue()
+    {
+       $this->setUpdated(time());
+    }
     
     /**
-     * @mongodb:Id
+     * @MongoDB\Id
      */
     protected $id;
 
     /**
-     * @mongodb:Field(type="string")
+     * @MongoDB\String
      */
     protected $title;
 
     /**
-     * @mongodb:Field(type="text")
+     * @MongoDB\String
      */
     protected $text;
 
     /**
-     * @mongodb:Field(type="timestamp")
+     * @MongoDB\Timestamp
      */
     protected $created;
 
     /**
-     *@mongodb:Field(type="timestamp")
+     * @MongoDB\Timestamp
      */
     protected $updated;
 

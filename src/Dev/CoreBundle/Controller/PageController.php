@@ -10,8 +10,8 @@ use Dev\CoreBundle\Form\BlogType;
 class PageController extends Controller
 {
     public function indexAction()
-    {
-        $em = $this->get('doctrine.odm.mongodb.document_manager');
+    {   
+        $dm = $this->get('doctrine.odm.mongodb.document_manager');
 
     	//j'ajoute le formulaire d'ajout de nouveau blog post
     	$newBlog = new Blog();
@@ -24,9 +24,9 @@ class PageController extends Controller
             $newBlogForm->bind($request);
 
             if($newBlogForm->isValid()) {
-                $em->persist($newBlog);
-                $em->flush($newBlog);
-                $blogs = $em->getRepository('DevCoreBundle:Blog')->findLast(10);
+                $dm->persist($newBlog);
+                $dm->flush($newBlog);
+                $blogs = $dm->getRepository('DevCoreBundle:Blog')->findLast(10);
 
                 return $this->render('DevCoreBundle:Page:index.html.twig', array(
                     'blogs' => $blogs,
@@ -34,7 +34,7 @@ class PageController extends Controller
                 ));
             }
         }
-        $blogs = $em->getRepository('DevCoreBundle:Blog')->findLast(10);
+        $blogs = $dm->getRepository('DevCoreBundle:Blog')->findLast(10);
 
         return $this->render('DevCoreBundle:Page:index.html.twig', array(
             'blogs' => $blogs,
