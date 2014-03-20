@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         {% block body %}
-            <div class="col-sm-8 blog-main">
+            <div class="col-sm-9 blog-main">
                 <section>
                     <form action="{{ path('DevCoreBundle_homepage') }}" method="post" {{ form_enctype(newBlogForm) }}>
                         {{ form_widget(newBlogForm) }}
@@ -16,17 +16,23 @@
                     </form>
                 </section>
                 {% for blog in blogs %}
-                    <section>
-                        <h1>{{ blog.title }}</h1>
+                    <section class="blogEntry">
+                        <h1 class="blogTitle">{{ blog.title }} <i class="glyphicon glyphicon-edit editButton"></i> <i class="glyphicon glyphicon-trash trashButton"></i></h1>
                         <p>{{ blog.text|raw }}</p>
                     </section>
                 {% endfor %}
             </div>
         {% endblock %}
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
             {% block sidebar %}
                 Filter 
             {% endblock %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/devcore/js/blogCreationForm.js') }}"></script>
+    <script src="{{ asset('bundles/devcore/js/blogEditionForm.js') }}"></script>
 {% endblock %}

@@ -87,3 +87,17 @@ header h3 {
 	margin-bottom: 20px; 
 }
 
+
+
+/*css perso*/
+
+.trashButton{
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+}
+.editButton{
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+}
