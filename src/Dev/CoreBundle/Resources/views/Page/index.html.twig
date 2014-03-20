@@ -11,7 +11,7 @@
     {% for blog in blogs %}
     	<section>
     		<h1>{{ blog.title }}</h1>
-    		<p>{{ blog.text }}
+    		<p>{{ blog.text|raw }}</p>
     	</section>
     {% endfor %}
 {% endblock %}
