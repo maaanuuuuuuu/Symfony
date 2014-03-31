@@ -12,7 +12,7 @@
                 <section>
                     <form action="{{ path('DevCoreBundle_homepage') }}" method="post" {{ form_enctype(newBlogForm) }}>
                         {{ form_widget(newBlogForm) }}
-                        <button type="submit" class="btn-search"><span><i class="icon-search"></i> Submit </span></button>
+                        <button type="submit" class="btn btn-default pull-right"><span><i class="icon-search"></i> Submit </span></button>
                     </form>
                 </section>
                 {% for blog in blogs %}

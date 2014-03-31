@@ -1,0 +1,16 @@
+{# src/Blogger/BlogBundle/Resources/views/Projects/create.html.twig #}
+{% extends 'DevCoreBundle::layout.html.twig' %}
+
+{% block container %}
+  <form action="{{ path('DevCoreBundle_projects_creation') }}" method="post" {{ form_enctype(newProjectForm) }}>
+      {{ form_widget(newProjectForm) }}
+      <button type="submit" class="btn btn-default pull-right"><span><i class="icon-search"></i> Submit </span></button>
+  </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var postaction = {};
+    </script>
+{% endblock %}

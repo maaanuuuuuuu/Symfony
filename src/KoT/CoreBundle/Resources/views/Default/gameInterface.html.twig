@@ -1,0 +1,54 @@
+{% extends 'KoTCoreBundle::base.html.twig' %}
+{% block body %}
+<div class="site-wrapper">
+	<div class="site-wrapper-inner">
+        <div class="cover-container">
+      	  <div class="masthead clearfix">
+            <div class="row">
+				{% for player in game.players %}
+					<div id="player{{ loop.index }}" class="col-sm-2">
+						<span class="stars">{{ player.stars }}</span> <span class="glyphicon glyphicon-star"></span>
+						<span class="hearts">{{ player.hearts }}</span>/<span class="maxHeartsNumber">{{ player.maxHeartsNumber }}</span><span class="glyphicon glyphicon-heart"></span>
+						<p class="playerName">{{ player.playerName }}</p>
+					</div>
+				{% endfor %}
+            </div>
+          </div>
+
+          <div class="cover">
+          	{% if game.started %}
+        		Le joeur dans tokyo est: {{ game.playerInTokyoName }}<br />
+        		{{ game.currentPlayerName }}, c'est à toi de jouer !
+    		{% else %}
+        		La partie n'est pas commencée
+        	{% endif %}
+        	<div class="center" id="dices">
+        		{% for i in 1..mainPlayer.numberOfDices %}
+        			<div class="dice" data-value="0">0</div>
+        		{% endfor %}
+        			<button id="rollDices">Roll</button>
+        	</div>
+          </div>
+
+          <div class="mastfoot">
+            <div class="">
+				<div class="playerName">{{ mainPlayer.playerName }}</div>
+				<div class="playerCommands {% if game.started %} gameStarted{% endif %}">
+					<div class="playerDices">
+						{% for i in 1..mainPlayer.numberOfDices %}
+        					<div class="dice emptyDiceContainer" data-value="0">&nbsp;</div>
+        				{% endfor %}
+					</div>
+					<div class="playerActions">
+						<button disabled>Quitter Tokyo</button>
+					</div>
+				</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+{% endblock body%}

@@ -19,7 +19,8 @@ class BlogType extends AbstractType
                     'required'  => true,
                     'label'  => ' ',
                     'attr' => array(
-                        'placeholder' => 'Title',
+                        'placeholder' => 'Titre',
+                        'class' => 'form-control titleBlogInput',
                     )
                 )
             )
@@ -30,6 +31,7 @@ class BlogType extends AbstractType
                     'label'  => ' ',
                     'attr' => array(
                         'placeholder' => 'Post ...',
+                        'class' => 'form-control',
                     )
                 )
             );

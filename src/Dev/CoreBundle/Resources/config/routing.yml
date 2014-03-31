@@ -23,3 +23,21 @@ DevCoreBundle_blog_delete:
     defaults: { _controller: DevCoreBundle:Blog:delete }
     requirements:
         _method: POST
+
+DevCoreBundle_projects_homepage:
+    pattern:  /projects
+    defaults: { _controller: DevCoreBundle:Projects:index }
+    requirements:
+        _method:  GET|POST
+
+DevCoreBundle_projects_show:
+    pattern:  /projects
+    defaults: { _controller: DevCoreBundle:Projects:index }
+    requirements:
+        _method:  GET|POST
+
+DevCoreBundle_projects_creation:
+    pattern:  /projects/create
+    defaults: { _controller: DevCoreBundle:Projects:creation }
+    requirements:
+        _method:  GET|POST

@@ -25,9 +25,10 @@ class PageController extends Controller
 
             if($newBlogForm->isValid()) {
                 $dm->persist($newBlog);
-                $dm->flush($newBlog);
+                $dm->flush();
                 $blogs = $dm->getRepository('DevCoreBundle:Blog')->findLast(10);
 
+                $newBlogForm = $this->createForm(new BlogType(), new Blog());
                 return $this->render('DevCoreBundle:Page:index.html.twig', array(
                     'blogs' => $blogs,
                     'newBlogForm' => $newBlogForm->createView()

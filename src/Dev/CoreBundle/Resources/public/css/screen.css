@@ -116,3 +116,16 @@ header h3 {
 .cancelDeleteButton{
 	cursor: pointer;
 }
+.titleBlogInput{
+    font-size: 36px!important;
+    height: 50px!important;
+}
+.dummyTitle{
+	margin-bottom: 4px;
+    margin-left: 14px;
+    margin-top: 6px;
+    cursor:pointer;
+}
+
+
+

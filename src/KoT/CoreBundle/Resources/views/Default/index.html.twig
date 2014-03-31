@@ -1,0 +1,14 @@
+
+{% extends 'KoTCoreBundle::base.html.twig' %}
+{% block body %}
+	<div class="container">
+	  <form class="form-signin" role="form" action="{{ path('kot_core_homepage') }}" method="post" {{ form_enctype(newPlayerForm) }}>
+	    <h2 class="form-signin-heading">Près à jouer ?</h2>
+	    {{ form_widget(newPlayerForm) }}
+	    <button class="btn btn-lg btn-primary btn-block" type="submit">Jouer</button>
+	  </form>
+	</div> <!-- /container -->
+{% endblock body %}
+
+
+

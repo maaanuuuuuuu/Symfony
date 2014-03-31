@@ -1,3 +1,7 @@
+ko_t_core:
+    resource: "@KoTCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 dev_core:
     resource: "@DevCoreBundle/Resources/config/routing.yml"
     prefix:   /

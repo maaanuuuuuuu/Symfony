@@ -6,6 +6,7 @@ namespace Dev\CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Httpfoundation\Response;
 
+
 /**
  * Blog controller.
  */

@@ -1,0 +1,7 @@
+parameters:
+#    ko_t_core.example.class: KoT\CoreBundle\Example
+
+services:
+#    ko_t_core.example:
+#        class: %ko_t_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

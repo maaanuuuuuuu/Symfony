@@ -1,0 +1,24 @@
+kot_core_homepage:
+    pattern:  /KoT
+    defaults: { _controller: KoTCoreBundle:Default:index }
+    requirements:
+        _method:  GET|POST
+
+kot_core_createUser:
+    pattern:  /KoT/createUser
+    defaults: { _controller: KoTCoreBundle:Default:createUser }
+
+kot_core_createGame:
+    pattern:  /KoT/createGame
+    defaults: { _controller: KoTCoreBundle:Default:createGame }
+
+kot_core_createCard:
+    pattern:  /KoT/createCard
+    defaults: { _controller: KoTCoreBundle:Default:createCard }
+
+KoTCoreBundle_gameInterface:
+    pattern:  /KoT/gameInterface/{gameId}
+    defaults: { _controller: KoTCoreBundle:Default:gameInterface }
+    requirements:
+        _method:  GET|POST
+        gameId: ".+"

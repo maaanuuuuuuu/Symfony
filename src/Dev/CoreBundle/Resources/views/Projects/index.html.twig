@@ -1,0 +1,51 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/index.html.twig #}
+{% extends 'DevCoreBundle::layout.html.twig' %}
+
+{% block container %}
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button data-toggle="offcanvas" class="btn btn-primary btn-xs" type="button">Toggle nav</button>
+          </p>
+          <div class="well">
+            <h1>Projects</h1>
+            <p>Gérer ses projets.</p>
+          </div>
+          <div class="row">
+            {% for project in projects %}
+                <div class="col-6 col-sm-6 col-lg-4">
+                  link: {{ project.indexRouteName }}<br />
+                  link: {{ project.trelloBoardLink }}<br />
+                  link: {{ project.googleDocLink }}<br />
+                  <a href="{{ project.indexRouteName }}"><h2>{{ project.title }}</h2></a>
+                  <p>{{ project.text }}</p>
+                  <p><a role="button" href="{{ path('DevCoreBundle_projects_show')}}" class="btn btn-default">View details »</a></p>
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% block projectsMenu %}
+        <div role="navigation" id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
+          <div class="list-group">
+            <a class="list-group-item active" href="#">Homepage</a>
+            <a class="list-group-item" href="{{ path('DevCoreBundle_projects_creation')}}">Créer un projet</a>
+          </div>
+        </div>
+        {% endblock %}
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var postaction = {};
+    </script>
+{% endblock %}

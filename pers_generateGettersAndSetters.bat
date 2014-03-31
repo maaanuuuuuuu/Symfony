@@ -1,1 +1,1 @@
-php app/console doctrine:generate:entities Dev
+php app/console doctrine:mongodb:generate:documents DevCoreBundle

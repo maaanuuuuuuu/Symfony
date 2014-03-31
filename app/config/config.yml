@@ -88,6 +88,7 @@ doctrine_mongodb:
         default:
             mappings:
                 DevCoreBundle: ~
+                KoTCoreBundle: ~
             metadata_cache_driver: array 
 
 # Swiftmailer Configuration

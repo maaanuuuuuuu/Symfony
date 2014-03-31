@@ -1,14 +1,14 @@
 <?php
-// src/Dev/CoreBundle/Document/Blog.php
+// src/Dev/CoreBundle/Document/Project.php
 
 namespace Dev\CoreBundle\Document;
-use Dev\CoreBundle\Document\Project;
+use Dev\CoreBundle\Document\Blog;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 /**
- * @MongoDB\Document(collection="Blog", repositoryClass="Dev\CoreBundle\Document\BlogRepository")
+ * @MongoDB\Document(collection="Project", repositoryClass="Dev\CoreBundle\Document\ProjectRepository")
  */
-class Blog
+class Project
 {
 
     public function __construct()
@@ -41,12 +41,28 @@ class Blog
     protected $text;
 
     /**
+     * @MongoDB\String
+     */
+    protected $indexRouteName;
+
+    /**
      * @MongoDB\ReferenceMany(
-     *  targetDocument="Document\Project",
-     *  mappedBy = "blogs"
+     *  targetDocument="Blog",
+     *  inversedBy = "projects"
      * )
      */
-    protected $projects;
+    protected $blogs;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $googleDocLink;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $trelloBoardLink;
+
 
     /**
      * @MongoDB\Timestamp
@@ -72,7 +88,7 @@ class Blog
      * Set title
      *
      * @param string $title
-     * @return Blog
+     * @return Project
      */
     public function setTitle($title)
     {
@@ -95,7 +111,7 @@ class Blog
      * Set text
      *
      * @param string $text
-     * @return Blog
+     * @return Project
      */
     public function setText($text)
     {
@@ -115,33 +131,10 @@ class Blog
     }
 
     /**
-     * Set tags
-     *
-     * @param string $tags
-     * @return Blog
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return string 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Blog
+     * @return Project
      */
     public function setCreated($created)
     {
@@ -184,32 +177,98 @@ class Blog
     }
 
     /**
-     * Add project
+     * Add blog
      *
-     * @param Document\Project $project
+     * @param Blog $blog
      */
-    public function addProject(Project $project)
+    public function addBlog(Blog $blog)
     {
-        $this->projects[] = $project;
+        $this->blogs[] = $blog;
     }
 
     /**
-     * Remove project
+     * Remove blog
      *
-     * @param Document\Project $project
+     * @param Blog $blog
      */
-    public function removeProject(Project $project)
+    public function removeBlog(Blog $blog)
     {
-        $this->projects->removeElement($project);
+        $this->blogs->removeElement($blog);
     }
 
     /**
-     * Get projects
+     * Get blogs
      *
-     * @return Doctrine\Common\Collections\Collection $projects
+     * @return Doctrine\Common\Collections\Collection $blogs
      */
-    public function getProjects()
+    public function getBlogs()
     {
-        return $this->projects;
+        return $this->blogs;
+    }
+
+    /**
+     * Set googleDocLink
+     *
+     * @param string $googleDocLink
+     * @return self
+     */
+    public function setGoogleDocLink($googleDocLink)
+    {
+        $this->googleDocLink = $googleDocLink;
+        return $this;
+    }
+
+    /**
+     * Get googleDocLink
+     *
+     * @return string 
+     */
+    public function getGoogleDocLink()
+    {
+        return $this->googleDocLink;
+    }
+
+    /**
+     * Set trelloBoardLink
+     *
+     * @param string $trelloBoardLink
+     * @return Project
+     */
+    public function setTrelloBoardLink($trelloBoardLink)
+    {
+        $this->trelloBoardLink = $trelloBoardLink;
+        return $this;
+    }
+
+    /**
+     * Get trelloBoardLink
+     *
+     * @return string
+     */
+    public function getTrelloBoardLink()
+    {
+        return $this->trelloBoardLink;
+    }
+
+    /**
+     * Set indexRouteName
+     *
+     * @param string $indexRouteName
+     * @return Project
+     */
+    public function setIndexRouteName($indexRouteName)
+    {
+        $this->indexRouteName = $indexRouteName;
+        return $this;
+    }
+
+    /**
+     * Get indexRouteName
+     *
+     * @return string
+     */
+    public function getIndexRouteName()
+    {
+        return $this->indexRouteName;
     }
 }
