@@ -12,12 +12,16 @@
                 <section>
                     <form action="{{ path('DevCoreBundle_homepage') }}" method="post" {{ form_enctype(newBlogForm) }}>
                         {{ form_widget(newBlogForm) }}
+                        <div class="blogTagEditor">
+                            <input type="text" placeholder="Enter your tags" class="form-control"/>
+                        </div>
                         <button type="submit" class="btn btn-default pull-right"><span><i class="icon-search"></i> Submit </span></button>
                     </form>
                 </section>
                 {% for blog in blogs %}
                     <section class="blogEntry" data-id="{{ blog.id }}">
                         <h1 class="blogTitle">{{ blog.title }} <i class="glyphicon glyphicon-edit editButton"></i> <i class="glyphicon glyphicon-trash trashButton"></i></h1>
+                        <span class="blogTags"><b>{{ blog.tags|replace({",":"</b> <b>"})}}</b></span>
                         <p>{{ blog.text|raw }}</p>
                     </section>
                 {% endfor %}

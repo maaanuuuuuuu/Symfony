@@ -2,15 +2,21 @@
 // src/Dev/CoreBundle/Document/Project.php
 
 namespace Dev\CoreBundle\Document;
-use Dev\CoreBundle\Document\Blog;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
 /**
+ * This class represents Projects
+ * 
  * @MongoDB\Document(collection="Project", repositoryClass="Dev\CoreBundle\Document\ProjectRepository")
+ * @MongoDB\HasLifecycleCallbacks
  */
 class Project
 {
-
+    /**
+     * Le constructeur de blog.     
+     * 
+     */
     public function __construct()
     {
         $this->setCreated(time());
@@ -22,9 +28,9 @@ class Project
      */
     public function setUpdatedValue()
     {
-       $this->setUpdated(time());
+        $this->setUpdated(time());
     }
-    
+
     /**
      * @MongoDB\Id
      */
@@ -63,7 +69,6 @@ class Project
      */
     protected $trelloBoardLink;
 
-
     /**
      * @MongoDB\Timestamp
      */
@@ -77,7 +82,7 @@ class Project
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -87,7 +92,7 @@ class Project
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string  $title
      * @return Project
      */
     public function setTitle($title)
@@ -100,7 +105,7 @@ class Project
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -110,7 +115,7 @@ class Project
     /**
      * Set text
      *
-     * @param string $text
+     * @param  string  $text
      * @return Project
      */
     public function setText($text)
@@ -123,7 +128,7 @@ class Project
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -133,7 +138,7 @@ class Project
     /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param  \DateTime $created
      * @return Project
      */
     public function setCreated($created)
@@ -146,7 +151,7 @@ class Project
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -156,7 +161,7 @@ class Project
     /**
      * Set updated
      *
-     * @param \DateTime $updated
+     * @param  \DateTime $updated
      * @return Blog
      */
     public function setUpdated($updated)
@@ -169,7 +174,7 @@ class Project
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -209,19 +214,20 @@ class Project
     /**
      * Set googleDocLink
      *
-     * @param string $googleDocLink
+     * @param  string $googleDocLink
      * @return self
      */
     public function setGoogleDocLink($googleDocLink)
     {
         $this->googleDocLink = $googleDocLink;
+
         return $this;
     }
 
     /**
      * Get googleDocLink
      *
-     * @return string 
+     * @return string
      */
     public function getGoogleDocLink()
     {
@@ -231,12 +237,13 @@ class Project
     /**
      * Set trelloBoardLink
      *
-     * @param string $trelloBoardLink
+     * @param  string  $trelloBoardLink
      * @return Project
      */
     public function setTrelloBoardLink($trelloBoardLink)
     {
         $this->trelloBoardLink = $trelloBoardLink;
+
         return $this;
     }
 
@@ -253,12 +260,13 @@ class Project
     /**
      * Set indexRouteName
      *
-     * @param string $indexRouteName
+     * @param  string  $indexRouteName
      * @return Project
      */
     public function setIndexRouteName($indexRouteName)
     {
         $this->indexRouteName = $indexRouteName;
+
         return $this;
     }
 

@@ -2,19 +2,26 @@
 // src/Dev/CoreBundle/Document/Blog.php
 
 namespace Dev\CoreBundle\Document;
-use Dev\CoreBundle\Document\Project;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
+ * Cette classe représente un blog. C'est à dire un poste 
+ * 
  * @MongoDB\Document(collection="Blog", repositoryClass="Dev\CoreBundle\Document\BlogRepository")
  */
 class Blog
 {
-
+    /**
+     * Le constructeur de blog.     
+     * 
+     */
     public function __construct()
     {
         $this->setCreated(time());
         $this->setUpdated(time());
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -22,9 +29,9 @@ class Blog
      */
     public function setUpdatedValue()
     {
-       $this->setUpdated(time());
+        $this->setUpdated(time());
     }
-    
+
     /**
      * @MongoDB\Id
      */
@@ -47,6 +54,14 @@ class Blog
      * )
      */
     protected $projects;
+    
+    /**
+     * @MongoDB\ReferenceMany(
+     *  targetDocument="Document\Tag",
+     *  mappedBy = "blogs"
+     * )
+     */
+    protected $tags;
 
     /**
      * @MongoDB\Timestamp
@@ -61,7 +76,7 @@ class Blog
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,7 +86,7 @@ class Blog
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Blog
      */
     public function setTitle($title)
@@ -84,7 +99,7 @@ class Blog
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -94,7 +109,7 @@ class Blog
     /**
      * Set text
      *
-     * @param string $text
+     * @param  string $text
      * @return Blog
      */
     public function setText($text)
@@ -107,7 +122,7 @@ class Blog
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -115,32 +130,9 @@ class Blog
     }
 
     /**
-     * Set tags
-     *
-     * @param string $tags
-     * @return Blog
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return string 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param  \DateTime $created
      * @return Blog
      */
     public function setCreated($created)
@@ -153,7 +145,7 @@ class Blog
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -163,7 +155,7 @@ class Blog
     /**
      * Set updated
      *
-     * @param \DateTime $updated
+     * @param  \DateTime $updated
      * @return Blog
      */
     public function setUpdated($updated)
@@ -176,7 +168,7 @@ class Blog
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -211,5 +203,35 @@ class Blog
     public function getProjects()
     {
         return $this->projects;
+    }
+
+    /**
+     * Add tag
+     *
+     * @param Document\Tag $tag
+     */
+    public function addTag(\Document\Tag $tag)
+    {
+        $this->tags[] = $tag;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param Document\Tag $tag
+     */
+    public function removeTag(\Document\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection $tags
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

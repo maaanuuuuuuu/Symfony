@@ -1,7 +1,17 @@
 parameters:
-#    dev_core.example.class: Dev\CoreBundle\Example
+    # project_repository.class: Dev\CoreBundle\Document\ProjectRepository
 
 services:
-#    dev_core.example:
-#        class: %dev_core.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    dev_core.trelloAPI:
+        class: Dev\CoreBundle\Services\Trello\TrelloService
+        arguments:
+            dm: "@doctrine.odm.mongodb.document_manager"
+            logger: "@logger"
+
+    dev_core.project.listener:
+      class: Dev\CoreBundle\Listener\ProjectListener
+      arguments: 
+            logger: "@logger"
+      tags: 
+        - { name: doctrine_mongodb.odm.event_listener, event: postPersist }
+        - { name: doctrine_mongodb.odm.event_listener, event: postUpdate }

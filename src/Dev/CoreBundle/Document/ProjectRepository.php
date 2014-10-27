@@ -17,4 +17,15 @@ class ProjectRepository extends DocumentRepository
             ->getQuery()
             ->execute();
     }
+
+
+    // public function findByTrelloBoardLinkNotNull(){
+    	
+    // }
+    // public function findByTrelloBoardLink($trelloId){
+    // 	return $this->createQueryBuilder()
+    //         ->sort('created', 'DESC')
+    //         ->getQuery()
+    //         ->execute();
+    // }
 }

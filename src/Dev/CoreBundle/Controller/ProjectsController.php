@@ -23,7 +23,6 @@ class ProjectsController extends Controller
     {   
 		$newProject = new Project();
         $newProjectForm = $this->createForm(new ProjectType(), $newProject);
-
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
 	        $dm = $this->get('doctrine.odm.mongodb.document_manager');

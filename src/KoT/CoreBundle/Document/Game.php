@@ -25,11 +25,15 @@ class Game
     public function setUpdatedValue(array &$data)
     {
        $this->setUpdated(time());
-        //quand on passe le jeux à started, on selectionne un joeur au hasard pour être le current player
-       if(isset($data['started']) && $data['started'] == true){
-            $players = $data['players'];
-            $data['currentPlayer'] = $players[1];
-       }
+        //  quand on passe le jeux à started, on selectionne un joeur au hasard pour être le current player
+       // if($this->getStarted()){
+       //      $players = $data['players'];
+       //      // $data['currentPlayer'] = $players[0];
+       //      $this->setCurrentPlayer($players[0]);
+       // }
+       // if(isset($data['started']) && $data['started'] == true){
+            
+       // }
 
     }
     /**
