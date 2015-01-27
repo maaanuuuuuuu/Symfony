@@ -1,0 +1,14 @@
+movie_mash_core_homepage:
+    pattern:  /MovieMash
+    defaults: { _controller: MovieMashCoreBundle:Default:index }
+
+movie_mash_core_vote:
+    pattern:  /MovieMash/vote
+    defaults: { _controller: MovieMashCoreBundle:Default:vote }
+    requirements:
+        winner: \d+
+        looser: \d+
+
+movie_mash_core_vote:
+    pattern:  /MovieMash/populateDB
+    defaults: { _controller: MovieMashCoreBundle:Default:populateDB }

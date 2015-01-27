@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new Dev\CoreBundle\DevCoreBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new KoT\CoreBundle\KoTCoreBundle(),
+            new MovieMash\CoreBundle\MovieMashCoreBundle(),
+            new Green\CoreBundle\GreenCoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

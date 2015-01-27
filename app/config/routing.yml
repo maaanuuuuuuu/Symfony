@@ -1,3 +1,11 @@
+green_core:
+    resource: "@GreenCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+movie_mash_core:
+    resource: "@MovieMashCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ko_t_core:
     resource: "@KoTCoreBundle/Resources/config/routing.yml"
     prefix:   /

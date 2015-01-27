@@ -1,0 +1,7 @@
+parameters:
+
+services:
+    movie_mash_r_core.elo_rating:
+        class: MovieMash\CoreBundle\Service\EloRating
+        arguments: 
+            container: "@service_container"

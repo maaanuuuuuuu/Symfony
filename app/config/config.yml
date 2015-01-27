@@ -89,6 +89,8 @@ doctrine_mongodb:
             mappings:
                 DevCoreBundle: ~
                 KoTCoreBundle: ~
+                MovieMashCoreBundle: ~
+                GreenCoreBundle: ~
             metadata_cache_driver: array 
 
 # Swiftmailer Configuration

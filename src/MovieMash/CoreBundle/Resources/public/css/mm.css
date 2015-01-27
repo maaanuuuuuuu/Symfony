@@ -1,0 +1,21 @@
+
+
+
+.pictureContainer {
+    background: url("http://ia.media-imdb.com/images/M/MV5BMTU5MTczNTkxNl5BMl5BanBnXkFtZTgwNTM5NDc1MTE@._V1__SX640_SY720_.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 360px;
+    width: 238px;
+    cursor: pointer;
+    margin: 0 auto;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.container .col-md-6 {
+    text-align: center;
+    padding: 20px;
+}

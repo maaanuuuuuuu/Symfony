@@ -1,0 +1,43 @@
+<?php
+
+namespace Dev\CoreBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * This class represents a tag associated to a Blog post. These are key words in the article.
+ * 
+ * @MongoDB\Document(collection="Tag")
+ * @MongoDB\HasLifecycleCallbacks
+ */
+class Tag
+{
+    /**
+     * @MongoDB\Id
+     */
+    protected $id;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $title;
+
+    /**
+     * @MongoDB\ReferenceMany(
+     *  targetDocument="Blog",
+     *  inversedBy = "tags"
+     * )
+     */
+    protected $blogs;
+   
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
